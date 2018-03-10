@@ -1,0 +1,7 @@
+{
+    "navigation":{
+        "projects": ["Projects"],
+        "about": ["About"],
+        "contactMe": ["Contact Me"]
+    }
+}
