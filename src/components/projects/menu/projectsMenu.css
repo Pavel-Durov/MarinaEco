@@ -1,0 +1,33 @@
+.project-menu-section {
+    color: white;
+    background: green;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.project-menu-section:hover {
+    text-decoration: underline;
+}
+
+.work-menu-section {
+    color: black;
+    background: gray;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.work-menu-section span {
+    padding-left: 2em;
+}
+
+
+
+@media all and (max-width: 767px) {
+    /* Bootstrap xs trigger*/
+    .work-menu-section {
+        font-size: 40px;
+    }
+    .project-menu-section {
+        font-size: 20px;
+    }
+}
