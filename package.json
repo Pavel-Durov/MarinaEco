@@ -21,7 +21,6 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "bootstrap": "3.3.7",
-    "jquery": "2.2.4",
     "ramda": "0.25.0",
     "react": "15.6.2",
     "react-dom": "15.6.2",
