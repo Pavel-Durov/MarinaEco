@@ -1,28 +1,16 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { selectProject } from '../../actions/ProjectActions';
+import { getTranslate } from 'react-localize-redux';
+
 const connect = require('react-redux').connect;
 
-import ProjectList from './ProjectList';
+import ProjectsMenu from './ProjectsMenu';
 
-
-const Projects = (props) => {
-    const { workSelected, selectedProject, projectsCollection } = props;
-
+const Projects = ({ translate, workSelected, selectedProject, projectsCollection }) => {
     return (
         <div>
-            <h1>Projects</h1>
-            {/* <button onClick={workSelected}>
-                SELECT WORK
-            </button> */}
-
-            <ProjectList projects={projectsCollection} />
-
-            <div>
-                <h1>SelectedItem</h1>
-                <p>
-                    {JSON.stringify(selectedProject)}
-                </p>
-            </div>
+            <h1>{translate('projects')}</h1>
+            <ProjectsMenu projects={projectsCollection} />
         </div>
     );
 };
@@ -30,7 +18,8 @@ const Projects = (props) => {
 function mapStateToProps(state, ownProps) {
     return {
         selectedProject: state.projects.selectedProject,
-        projectsCollection: state.projects.projectsCollection
+        projectsCollection: state.projects.projectsCollection,
+        translate: getTranslate(state.localeReducer),
     };
 }
 

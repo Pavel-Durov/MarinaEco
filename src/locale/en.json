@@ -3,5 +3,6 @@
         "projects": ["Projects"],
         "about": ["About"],
         "contactMe": ["Contact Me"]
-    }
+    },
+    "projects": ["Projects"]
 }
