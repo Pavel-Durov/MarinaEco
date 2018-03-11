@@ -1,6 +1,6 @@
 import React from 'react';
 import Gallery from 'react-grid-gallery';
-import { prop, map } from 'ramda';
+import { prop, map, clone } from 'ramda';
 
 import './projectDetails.css';
 
@@ -19,7 +19,8 @@ class ProjectDetails extends React.Component {
                 </p>
 
 
-                <Gallery images={this.props.project ? this.props.project.works : []} />
+                <Gallery enableImageSelection={false}
+                    images={this.props.project ? clone(this.props.project.works) : []} />
             </div>
         )
     }
