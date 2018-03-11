@@ -2,61 +2,49 @@ export default {
     projects: [{
         id: '1',
         name: 'Project No. 1',
-        description: 'Project about blah blah',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu malesuada nulla. Vestibulum nec volutpat magna. Mauris et scelerisque enim, eu ultricies elit. Mauris porttitor quam sed nibh sollicitudin, nec aliquet urna facilisis. Maecenas commodo imperdiet dapibus. Ut urna nisi, fermentum vitae nunc sit amet, ornare lacinia eros. Quisque a augue justo. Donec vitae ligula a metus placerat malesuada. Nullam volutpat, velit sed cursus scelerisque, libero felis blandit quam, sit amet aliquam nulla leo eget tellus. Vivamus auctor aliquam augue, at tristique ipsum faucibus quis. Suspendisse et sapien metus. Nunc massa ante, tempus lacinia viverra id, laoreet eget velit.',
         works: [{
-            id: '1',
-            img: 'assets/img/works/img_1.jpg',
+            src: "assets/img/projects/proj_0/work_0.jpeg",
+            thumbnail: "assets/img/projects/proj_0/work_0.jpeg",
+            thumbnailWidth: 32,
+            thumbnailHeight: 17,
+            caption: "After Rain (Jeshu John - designerspics.com)",
             name: 'Work No. 1'
         }, {
-            id: '2',
-            img: 'assets/img/works/img_2.jpg',
+            src: "assets/img/projects/proj_0/work_1.jpeg",
+            thumbnail: "assets/img/projects/proj_0/work_1.jpeg",
+            thumbnailWidth: 100,
+            thumbnailHeight: 100,
+            caption: "Boats (Jeshu John - designerspics.com)",
             name: 'Work No. 2'
         }, {
-            id: '3',
-            img: 'assets/img/works/img_3.jpg',
+            src: "assets/img/projects/proj_0/work_2.jpeg",
+            thumbnail: "assets/img/projects/proj_0/work_2.jpeg",
+            thumbnailWidth: 320,
+            thumbnailHeight: 212,
             name: 'Work No. 3'
+        },{
+            src: "assets/img/projects/proj_0/work_2.jpeg",
+            thumbnail: "assets/img/projects/proj_0/work_2.jpeg",
+            thumbnailWidth: 320,
+            thumbnailHeight: 212,
+            name: 'Work No. 4'
+        },{
+            src: "assets/img/projects/proj_0/work_2.jpeg",
+            thumbnail: "assets/img/projects/proj_0/work_2.jpeg",
+            thumbnailWidth: 320,
+            thumbnailHeight: 212,
+            name: 'Work No. 5'
         }]
     }, {
         id: '2',
         name: 'Project No. 2',
-        description: 'Project about blah blah',
-        works: [{
-            id: '1',
-            img: '...',
-            name: 'Work No. 1'
-        }, {
-            id: '2',
-            img: '...',
-            name: 'Work No. 2'
-        }, {
-            id: '3',
-            img: '...',
-            name: 'Work No. 3'
-        }]
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu malesuada nulla. Vestibulum nec volutpat magna. Mauris et scelerisque enim, eu ultricies elit. Mauris porttitor quam sed nibh sollicitudin, nec aliquet urna facilisis. Maecenas commodo imperdiet dapibus. Ut urna nisi, fermentum vitae nunc sit amet, ornare lacinia eros. Quisque a augue justo. Donec vitae ligula a metus placerat malesuada. Nullam volutpat, velit sed cursus scelerisque, libero felis blandit quam, sit amet aliquam nulla leo eget tellus. Vivamus auctor aliquam augue, at tristique ipsum faucibus quis. Suspendisse et sapien metus. Nunc massa ante, tempus lacinia viverra id, laoreet eget velit.',
+        works: []
     },{
         id: '3',
         name: 'Project No. 3',
-        description: 'Project about blah blah',
-        works: [{
-            id: '1',
-            img: '...',
-            name: 'Work No. 1'
-        }, {
-            id: '2',
-            img: '...',
-            name: 'Work No. 2'
-        }, {
-            id: '3',
-            img: '...',
-            name: 'Work No. 3'
-        },{
-            id: '4',
-            img: '...',
-            name: 'Work No. 4'
-        },{
-            id: '5',
-            img: '...',
-            name: 'Work No. 5'
-        }]
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu malesuada nulla. Vestibulum nec volutpat magna. Mauris et scelerisque enim, eu ultricies elit. Mauris porttitor quam sed nibh sollicitudin, nec aliquet urna facilisis. Maecenas commodo imperdiet dapibus. Ut urna nisi, fermentum vitae nunc sit amet, ornare lacinia eros. Quisque a augue justo. Donec vitae ligula a metus placerat malesuada. Nullam volutpat, velit sed cursus scelerisque, libero felis blandit quam, sit amet aliquam nulla leo eget tellus. Vivamus auctor aliquam augue, at tristique ipsum faucibus quis. Suspendisse et sapien metus. Nunc massa ante, tempus lacinia viverra id, laoreet eget velit.',
+        works: []
     }]
 };

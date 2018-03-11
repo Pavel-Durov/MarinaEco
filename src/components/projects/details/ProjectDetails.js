@@ -1,19 +1,25 @@
 import React from 'react';
-import { prop } from 'ramda';
+import Gallery from 'react-grid-gallery';
+import { prop, map } from 'ramda';
 
 import './projectDetails.css';
 
 class ProjectDetails extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state = {
+            lightboxIsOpen: false
+        };
     }
     render() {
         return (
             <div>
                 <p className="project-description">
-                    {prop('name', this.props.project)}
+                    {prop('description', this.props.project)}
                 </p>
-                {JSON.stringify(this.props.project)}
+
+
+                <Gallery images={this.props.project ? this.props.project.works : []} />
             </div>
         )
     }
