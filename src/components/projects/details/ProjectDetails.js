@@ -1,17 +1,17 @@
 import React from 'react';
-import './projectContent.css';
+import { prop } from 'ramda';
 
-class ProjectContent extends React.Component {
+import './projectDetails.css';
+
+class ProjectDetails extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.props.project = {};
     }
     render() {
         return (
             <div>
-                <h1 className="project-name">{this.props.project.name}</h1>
                 <p className="project-description">
-                    {this.props.project.name}
+                    {prop('name', this.props.project)}
                 </p>
                 {JSON.stringify(this.props.project)}
             </div>
@@ -20,4 +20,4 @@ class ProjectContent extends React.Component {
 };
 
 
-export default ProjectContent;
+export default ProjectDetails;

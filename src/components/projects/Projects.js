@@ -1,30 +1,34 @@
 import React from 'react';
 import { selectProject } from '../../actions/ProjectActions';
 import { getTranslate } from 'react-localize-redux';
+import ProjectsMenu from './menu/ProjectsMenu';
+import ProjectDetails from './details/ProjectDetails'
+import { Grid, Row, Col } from 'react-bootstrap';
+
+import { prop } from 'ramda';
 
 const connect = require('react-redux').connect;
 
-import ProjectsMenu from './menu/ProjectsMenu';
-import ProjectContent from './content/ProjectContent'
-import { Grid, Row, Col } from 'react-bootstrap';
+import './projects.css';
 
-const Projects = ({ translate, workSelected, selectedProject, projectsCollection }) => {
-    return (
-        <div>
-            <h1>/{translate('projects')}</h1>
-            <Grid fluid="true">
-                <Row>
-                    <Col xs={12} sm={2} md={2} lg={2}>
-                        <ProjectsMenu projects={projectsCollection} />
-                    </Col>
-                    <Col xsHidden="true">
-                        <ProjectContent project={selectedProject}/>
-                    </Col>
-                </Row>
-            </Grid>
-        </div>
-    );
-};
+class Projects extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+    }
+
+    render() {
+        return (
+            <div id="page-wrap">
+                <h1 className="project-bread-crumbs">
+                    /{this.props.translate('projects')}
+                    {this.props.selectedProject ? `/${this.props.selectedProject.name}` : ''}
+                </h1>
+                <ProjectsMenu projects={this.props.projectsCollection} />
+                <ProjectDetails project={this.props.selectedProject} />
+            </div >
+        )
+    }
+}
 
 function mapStateToProps(state, ownProps) {
     return {
