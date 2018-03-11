@@ -4,10 +4,10 @@ export const WORKS_LOADED_SUCCESS = "projects/WORKS_LOADED_SUCCESS";
  
 import { ProjectsApi } from '../api/projects/ProjectsApi';
 
-export function selectProject(work) {
+export function selectProject(project) {
     return {
         type: WORKS_SELECTED_ACTION_TYPE,
-        payload: work
+        payload: project
     };
 }
 

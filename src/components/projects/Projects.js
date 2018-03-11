@@ -16,6 +16,10 @@ class Projects extends React.Component {
         super(props, context);
     }
 
+    componentWillUnmount() {
+        this.props.dispatch(selectProject(undefined))
+    }
+
     render() {
         return (
             <div id="page-wrap">
@@ -38,10 +42,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        workSelected: () => dispatch(selectProject({ name: Date.now() }))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Projects);
+export default connect(mapStateToProps)(Projects);
