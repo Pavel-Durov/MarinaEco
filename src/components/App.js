@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
+import './app.css';
 
 class App extends React.Component {
     render() {
         return (
-            <div id="outer-container" >
+            <div>
                 {this.props.children}
             </div>
         );

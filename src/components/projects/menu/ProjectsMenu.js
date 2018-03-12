@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { selectProject } from '../../../actions/ProjectActions';
-import { pushRotate as Menu } from 'react-burger-menu';
-import { map } from 'ramda';
+import { push as Menu } from 'react-burger-menu';
+import { map, clone } from 'ramda';
 
 const connect = require('react-redux').connect;
 import './projectsMenu.css';
@@ -22,25 +22,23 @@ class ProjectsMenu extends React.Component {
     handleStateChange(state) {
         this.setState({ menuOpen: this.state.isOpen });
     }
-
     render() {
         return (
             <div>
-                {/* pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } */}
-                <Menu isOpen={this.state.menuOpen} onStateChange={(state) => this.handleStateChange(state)}>
+                <Menu isOpen={this.state.menuOpen}
+                    onStateChange={(state) => this.handleStateChange(state)}
+                    pageWrapId={"outer-container"} outerContainerId={"outer-container"} >
                     {map(project =>
                         <ul id={project.id} onClick={(e) => this.onMenuItemClicked(e, project)}
                             className="menu-item">
                             <h2>{project.name}</h2>
                             {
-                                map(work =>
-                                    <li>{work.name}</li>
-                                    , (project.works || []))
+                                map(work => <li>{work.name}</li>, (project.works || []))
                             }
                         </ul>
                         , (this.props.projects || []))}
                 </Menu>
-            </div>
+            </div >
         );
     }
 }

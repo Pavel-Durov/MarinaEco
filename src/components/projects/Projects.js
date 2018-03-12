@@ -5,7 +5,7 @@ import ProjectsMenu from './menu/ProjectsMenu';
 import ProjectDetails from './details/ProjectDetails'
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import { prop } from 'ramda';
+import { prop, head } from 'ramda';
 
 const connect = require('react-redux').connect;
 
@@ -22,14 +22,18 @@ class Projects extends React.Component {
 
     render() {
         return (
-            <div id="page-wrap">
-                <h1 className="project-bread-crumbs">
-                    /{this.props.translate('projects')}
-                    {this.props.selectedProject ? `/${this.props.selectedProject.name}` : ''}
-                </h1>
+            <div>
                 <ProjectsMenu projects={this.props.projectsCollection} />
-                <ProjectDetails project={this.props.selectedProject} />
-            </div >
+                <div id="outer-container">
+                    <div id="outer-container">
+                        <h1 className="project-bread-crumbs">
+                            /{this.props.translate('projects')}
+                            {this.props.selectedProject ? `/${this.props.selectedProject.name}` : ''}
+                        </h1>
+                        <ProjectDetails project={this.props.selectedProject} />
+                    </div>
+                </div>
+            </div>
         )
     }
 }
