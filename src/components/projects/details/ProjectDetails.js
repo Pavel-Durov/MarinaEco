@@ -11,6 +11,7 @@ class ProjectDetails extends React.Component {
             lightboxIsOpen: false
         };
     }
+   
     render() {
         return (
             <div>
@@ -19,12 +20,11 @@ class ProjectDetails extends React.Component {
                 </p>
 
 
-                <Gallery enableImageSelection={false}
-                    images={this.props.project ? clone(this.props.project.works) : []} />
+                <Gallery enableImageSelection={false} images={this.props.project.works ? clone(this.props.project.works): []} />
             </div>
         )
     }
-};
+}
 
 
 export default ProjectDetails;

@@ -29,8 +29,7 @@ class ProjectsMenu extends React.Component {
                     onStateChange={(state) => this.handleStateChange(state)}
                     pageWrapId={"outer-container"} outerContainerId={"outer-container"} >
                     {map(project =>
-                        <ul id={project.id} onClick={(e) => this.onMenuItemClicked(e, project)}
-                            className="menu-item">
+                        <ul id={project.id} onClick={(e) => this.onMenuItemClicked(e, project)} className="menu-item">
                             <h2>{project.name}</h2>
                             {
                                 map(work => <li>{work.name}</li>, (project.works || []))
