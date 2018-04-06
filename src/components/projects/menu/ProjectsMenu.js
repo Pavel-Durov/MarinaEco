@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { selectProject } from '../../../actions/ProjectActions';
 import { push as Menu } from 'react-burger-menu';
-import { map, clone } from 'ramda';
+import { map, clone, find, propEq, prop, not, isNil } from 'ramda';
 
 const connect = require('react-redux').connect;
 import './projectsMenu.css';
@@ -12,27 +13,37 @@ class ProjectsMenu extends React.Component {
         this.state = {
             menuOpen: false
         };
+
+        this.handleStateChange = this.handleStateChange.bind(this);
+        this.onMenuItemClicked = this.onMenuItemClicked.bind(this);
     }
 
-    onMenuItemClicked(event, project) {
+    onMenuItemClicked(event) {
         event.preventDefault();
-        this.props.dispatch(selectProject(project));
-        this.setState({ menuOpen: false });
+        const selectedProjectId = event.target.getAttribute('project-id');
+        const project = find(propEq('id', parseInt(selectedProjectId)), this.props.projects);
+        if (not(isNil(project))) {
+            this.props.dispatch(selectProject(project));
+            this.setState({ menuOpen: false });
+        }
+
     }
+
     handleStateChange(state) {
         this.setState({ menuOpen: this.state.isOpen });
     }
+
     render() {
         return (
             <div>
                 <Menu isOpen={this.state.menuOpen}
-                    onStateChange={(state) => this.handleStateChange(state)}
+                    onStateChange={this.handleStateChange}
                     pageWrapId={"outer-container"} outerContainerId={"outer-container"} >
                     {map(project =>
-                        <ul id={project.id} onClick={(e) => this.onMenuItemClicked(e, project)} className="menu-item">
-                            <h2>{project.name}</h2>
+                        <ul project-id={project.id} onClick={this.onMenuItemClicked} className="menu-item">
+                            <h2 project-id={project.id}>{project.name}</h2>
                             {
-                                map(work => <li>{work.name}</li>, (project.works || []))
+                                map(work => <li project-id={project.id}>{work.name}</li>, (project.works || []))
                             }
                         </ul>
                         , (this.props.projects || []))}
@@ -41,5 +52,10 @@ class ProjectsMenu extends React.Component {
         );
     }
 }
+
+ProjectsMenu.propTypes = {
+    dispatch: PropTypes.func,
+    projects: PropTypes.array
+};
 
 export default connect()(ProjectsMenu);

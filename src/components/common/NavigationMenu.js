@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import { localize } from 'react-localize-redux';
+import PropTypes from 'prop-types';
 
 const menuStyle = {
     display: "inline-block"
@@ -25,4 +26,7 @@ const NavigationMenu = ({translate}) => {
     );
 };
 
+NavigationMenu.propTypes = {
+    translate: PropTypes.func
+};
 export default localize(NavigationMenu, 'localeReducer');

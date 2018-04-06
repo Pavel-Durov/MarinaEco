@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { selectProject } from '../../actions/ProjectActions';
 import { getTranslate } from 'react-localize-redux';
-import ProjectsMenu from './menu/ProjectsMenu';
-import ProjectDetails from './details/ProjectDetails'
-import { Grid, Row, Col } from 'react-bootstrap';
-import Gallery from 'react-grid-gallery';
+import { isNil, clone } from 'ramda';
 
-import { prop, head, isNil, not, clone } from 'ramda';
+import ProjectDetails from './details/ProjectDetails';
+import ProjectsMenu from './menu/ProjectsMenu';
+import Gallery from 'react-grid-gallery';
 
 const connect = require('react-redux').connect;
 
@@ -22,7 +22,7 @@ class Projects extends React.Component {
         this.props.dispatch(selectProject(undefined));
     }
     onProjectSelected(index) {
-        var project = this.props.projectsCollection[index];
+        const project = this.props.projectsCollection[index];
         this.props.dispatch(selectProject(project));
     }
     render() {
@@ -47,7 +47,7 @@ class Projects extends React.Component {
                     }
                 </div>
             </div>
-        )
+        );
     }
 }
 
@@ -59,5 +59,14 @@ function mapStateToProps(state, ownProps) {
         translate: getTranslate(state.localeReducer),
     };
 }
+
+Projects.propTypes = {
+    'dispatch': PropTypes.func,
+    'projectsCollection': PropTypes.array,
+    'menuItems': PropTypes.array,
+    'selectedProject': PropTypes.object,
+    'translate': PropTypes.func,
+    'selectedProject.name': PropTypes.string
+};
 
 export default connect(mapStateToProps)(Projects);

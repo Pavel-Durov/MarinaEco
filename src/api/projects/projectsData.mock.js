@@ -1,6 +1,6 @@
 export default {
     projects: [{
-        id: '1',
+        id: 1,
         thumbnail: "assets/img/projects/proj_0/work_0.jpeg",
         thumbnailWidth: 40,
         thumbnailHeight: 40,
@@ -39,7 +39,7 @@ export default {
             name: 'Work No. 5'
         }]
     }, {
-        id: '2',
+        id: 2,
         thumbnail: "assets/img/projects/proj_0/work_0.jpeg",
         thumbnailWidth: 40,
         thumbnailHeight: 40,
@@ -111,7 +111,7 @@ export default {
             name: 'Work No. 5'
         }]
     },{
-        id: '3',
+        id: 3,
         thumbnail: "assets/img/projects/proj_0/work_0.jpeg",
         thumbnailWidth: 40,
         thumbnailHeight: 40,

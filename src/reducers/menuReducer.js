@@ -1,27 +1,25 @@
-import {
-    PROJECTS_LOADED_SUCCESS
-} from '../actions/ProjectActions';
+import { PROJECTS_LOADED_SUCCESS } from '../actions/ProjectActions';
 
 const DEFAULT_STATE = {
     items: undefined
 };
 
-var globalNavMenuItems = [
-    { 
+const globalNavMenuItems = [
+    {
         name: 'Home',
         isNavLink: true
-    }, 
-    { 
+    },
+    {
         name: 'About',
         isNavLink: true
-    }, 
-    { 
+    },
+    {
         name: 'Projects',
         isNavLink: true
-    }, 
-    { 
+    },
+    {
         name: 'Contact me',
-        isNavLink: true        
+        isNavLink: true
     },
 ];
 
