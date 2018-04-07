@@ -5,7 +5,8 @@
   "scripts": {
     "removeDist": "rm -fr ./dist ",
     "start": "npm-run-all --parallel test:watch launch lint:watch",
-    "launch": "removeDist & webpack-dev-server --hot --port=1235 --history-api-fallback",
+    "build": "webpack --mode production",
+    "launch": "removeDist & webpack-dev-server --hot --port=1235 --history-api-fallback --mode development",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.spec.js\"",
