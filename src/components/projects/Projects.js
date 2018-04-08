@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { selectProject } from '../../actions/ProjectActions';
 import { getTranslate } from 'react-localize-redux';
-import { isNil, clone } from 'ramda';
+import { not, isNil, isEmpty, clone } from 'ramda';
 
 import ProjectDetails from './details/ProjectDetails';
 import ProjectsMenu from './menu/ProjectsMenu';
@@ -31,10 +31,14 @@ class Projects extends React.Component {
                 <ProjectsMenu projects={this.props.menuItems} />
                 <div id="outer-container">
                     {
-                        isNil(this.props.selectedProject) ?
+                        isNil(this.props.selectedProject.name) ?
                             (<div>
-                                <Gallery enableImageSelection={false} onClickThumbnail={this.onProjectSelected}
-                                    images={this.props.projectsCollection ? clone(this.props.projectsCollection) : []} />
+                                {
+                                    not(isEmpty(this.props.projectsCollection)) ?
+                                        <Gallery enableImageSelection={false} onClickThumbnail={this.onProjectSelected}
+                                            images={clone(this.props.projectsCollection)} />
+                                        : <div/>
+                                }
                             </div>)
                             :
                             (<div>
@@ -54,8 +58,8 @@ class Projects extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         menuItems: state.menu.items,
-        selectedProject: state.projects.selectedProject,
-        projectsCollection: state.projects.projectsCollection,
+        selectedProject: state.projects.selectedProject || {},
+        projectsCollection: state.projects.projectsCollection || [],
         translate: getTranslate(state.localeReducer),
     };
 }

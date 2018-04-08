@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { selectProject } from '../../../actions/ProjectActions';
 import { push as Menu } from 'react-burger-menu';
-import { map, clone, find, propEq, prop, not, isNil } from 'ramda';
+import { clone, find, propEq, prop, not, isNil } from 'ramda';
 
 const connect = require('react-redux').connect;
 import './projectsMenu.css';
@@ -60,7 +60,6 @@ class ProjectsMenu extends React.Component {
                                             }
                                         </div>
                                 }
-
                             </ul>)
                     }
                 </Menu>
