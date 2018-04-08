@@ -34,7 +34,7 @@ class Projects extends React.Component {
                         isNil(this.props.selectedProject) ?
                             (<div>
                                 <Gallery enableImageSelection={false} onClickThumbnail={this.onProjectSelected}
-                                    images={this.props.projectsCollection ? clone(this.props.projectsCollection) : []} />
+                                    images={clone(this.props.projectsCollection || [])} />
                             </div>)
                             :
                             (<div>
@@ -54,8 +54,8 @@ class Projects extends React.Component {
 function mapStateToProps(state, ownProps) {
     return {
         menuItems: state.menu.items,
-        selectedProject: state.projects.selectedProject,
-        projectsCollection: state.projects.projectsCollection,
+        selectedProject: state.projects.selectedProject || {},
+        projectsCollection: state.projects.projectsCollection || [],
         translate: getTranslate(state.localeReducer),
     };
 }

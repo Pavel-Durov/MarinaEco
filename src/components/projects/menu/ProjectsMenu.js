@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { selectProject } from '../../../actions/ProjectActions';
 import { push as Menu } from 'react-burger-menu';
-import { map, clone, find, propEq, prop, not, isNil } from 'ramda';
+import { clone, find, propEq, prop, not, isNil } from 'ramda';
 
 const connect = require('react-redux').connect;
 import './projectsMenu.css';
@@ -38,15 +38,19 @@ class ProjectsMenu extends React.Component {
             <div>
                 <Menu isOpen={this.state.menuOpen}
                     onStateChange={this.handleStateChange}
-                    pageWrapId={"outer-container"} outerContainerId={"outer-container"} >
-                    {map(project =>
-                        <ul project-id={project.id} onClick={this.onMenuItemClicked} className="menu-item">
-                            <h2 project-id={project.id}>{project.name}</h2>
-                            {
-                                map(work => <li project-id={project.id}>{work.name}</li>, (project.works || []))
-                            }
-                        </ul>
-                        , (this.props.projects || []))}
+                    pageWrapId={"outer-container"} outerContainerId={"outer-container"}>
+                    {
+                        (this.props.projects || []).map((project, projectIndex) =>
+                            <ul key={projectIndex} project-id={project.id}
+                                onClick={this.onMenuItemClicked} className="menu-item">
+                                <h2 project-id={project.id}>{project.name}</h2>
+                                {
+                                    (project.works || []).map((work, workIndex) => {
+                                        return <li key={`${projectIndex}${workIndex}`} project-id={project.id}>{work.name}</li>;
+                                    })
+                                }
+                            </ul>)
+                    }
                 </Menu>
             </div >
         );
