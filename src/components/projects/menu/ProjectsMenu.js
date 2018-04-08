@@ -44,12 +44,13 @@ class ProjectsMenu extends React.Component {
                         (this.props.projects || []).map((project, projectIndex) =>
                             <ul key={projectIndex} project-id={project.id}
                                 onClick={this.onMenuItemClicked} className="menu-item">
-
                                 {
                                     project.isNavLink ?
+                                      <h2>
                                         <Link to={project.link}>
                                             {project.name}
                                         </Link>
+                                      </h2>
                                     :
                                         <div>
                                             <h2 project-id={project.id}>{project.name}</h2>
