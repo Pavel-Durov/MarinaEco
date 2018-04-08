@@ -43,7 +43,6 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
     new CopyWebpackPlugin([{ from: 'src/index.html' }]),
     new WriteFilePlugin(),
@@ -68,13 +67,20 @@ module.exports = {
         },
       },
     }, {
-      test: /(\.css)$/, use: ['style-loader', 'css-loader?url=false']
+      test: /(\.css)$/,
+      use: [
+        { loader: "style-loader" },
+        { loader: "css-loader" }
+      ]
     }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: 'file-loader'
+      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+      use: 'file-loader'
     }, {
-      test: /\.(woff|woff2)$/, use: 'url-loader?prefix=font/&limit=5000'
+      test: /\.(woff|woff2)$/, 
+      use: 'url-loader?prefix=font/&limit=5000'
     }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml'
+      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+      use: 'url-loader?limit=10000&mimetype=image/svg+xml'
     }],
   }
 };
