@@ -7,19 +7,23 @@ const DEFAULT_STATE = {
 const globalNavMenuItems = [
     {
         name: 'Home',
-        isNavLink: true
+        isNavLink: true,
+        link: '/'
     },
     {
         name: 'About',
-        isNavLink: true
+        isNavLink: true,
+        link: 'about'
     },
     {
         name: 'Projects',
-        isNavLink: true
+        isNavLink: true,
+        link: 'projects'
     },
     {
         name: 'Contact me',
-        isNavLink: true
+        isNavLink: true,
+        link: 'contactMe'
     },
 ];
 
