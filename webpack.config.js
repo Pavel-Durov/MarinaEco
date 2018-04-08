@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   stats: {
@@ -13,12 +13,27 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   entry: {
-    appBundle: path.resolve(__dirname, 'src/index')
+    app: path.resolve(__dirname, 'src/index'),
+    vendor: [
+      "babel-polyfill",
+      "ramda",
+      "react",
+      "react-bootstrap",
+      "react-burger-menu",
+      "react-dom",
+      "react-grid-gallery",
+      "react-localize-redux",
+      "react-redux",
+      "react-router",
+      "react-router-redux",
+      "redux",
+      "redux-thunk",
+    ],
   },
   target: 'web',
   output: {
     path: `${__dirname}/dist`,
-    filename: 'app.bundle.js',
+    filename: '[name].bundle.js',
     publicPath: path.join(__dirname, "dist"),
   },
   devServer: {
@@ -30,8 +45,9 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
-    new CopyWebpackPlugin([{ from: 'src/index.html'}]),
-    new WriteFilePlugin()
+    new CopyWebpackPlugin([{ from: 'src/index.html' }]),
+    new WriteFilePlugin(),
+    //new CleanWebpackPlugin('dist')
   ],
   module: {
     rules: [{
