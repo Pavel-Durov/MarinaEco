@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   stats: {
@@ -46,7 +46,7 @@ module.exports = {
     new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
     new CopyWebpackPlugin([{ from: 'src/index.html' }]),
     new WriteFilePlugin(),
-    //new CleanWebpackPlugin('dist')
+    new CleanWebpackPlugin('dist')
   ],
   module: {
     rules: [{
