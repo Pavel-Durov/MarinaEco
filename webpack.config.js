@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   stats: {
@@ -13,12 +13,27 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   entry: {
-    appBundle: path.resolve(__dirname, 'src/index')
+    app: path.resolve(__dirname, 'src/index'),
+    vendor: [
+      "babel-polyfill",
+      "ramda",
+      "react",
+      "react-bootstrap",
+      "react-burger-menu",
+      "react-dom",
+      "react-grid-gallery",
+      "react-localize-redux",
+      "react-redux",
+      "react-router",
+      "react-router-redux",
+      "redux",
+      "redux-thunk",
+    ],
   },
   target: 'web',
   output: {
     path: `${__dirname}/dist`,
-    filename: 'app.bundle.js',
+    filename: '[name].bundle.js',
     publicPath: path.join(__dirname, "dist"),
   },
   devServer: {
@@ -28,10 +43,10 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
-    new CopyWebpackPlugin([{ from: 'src/index.html'}]),
-    new WriteFilePlugin()
+    new CopyWebpackPlugin([{ from: 'src/index.html' }]),
+    new WriteFilePlugin(),
+    new CleanWebpackPlugin('dist')
   ],
   module: {
     rules: [{
@@ -52,13 +67,20 @@ module.exports = {
         },
       },
     }, {
-      test: /(\.css)$/, use: ['style-loader', 'css-loader?url=false']
+      test: /(\.css)$/,
+      use: [
+        { loader: "style-loader" },
+        { loader: "css-loader" }
+      ]
     }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: 'file-loader'
+      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+      use: 'file-loader'
     }, {
-      test: /\.(woff|woff2)$/, use: 'url-loader?prefix=font/&limit=5000'
+      test: /\.(woff|woff2)$/, 
+      use: 'url-loader?prefix=font/&limit=5000'
     }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml'
+      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+      use: 'url-loader?limit=10000&mimetype=image/svg+xml'
     }],
   }
 };
