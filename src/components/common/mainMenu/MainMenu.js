@@ -6,7 +6,7 @@ import { push as Menu } from 'react-burger-menu';
 import { clone, find, propEq, prop, not, isNil } from 'ramda';
 
 const connect = require('react-redux').connect;
-import './MainMenu.css';
+import './menu.css';
 
 class MainMenu extends React.Component {
     constructor(props, context) {

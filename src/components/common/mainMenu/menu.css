@@ -60,3 +60,7 @@
     color: inherit; /* blue colors for links too */
     text-decoration: inherit; /* no underline */
 }
+
+#outer-container{
+    margin-left: 60px;
+}
