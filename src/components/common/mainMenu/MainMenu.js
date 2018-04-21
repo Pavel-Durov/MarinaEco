@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import { selectProject } from '../../../actions/ProjectActions';
 import { push as Menu } from 'react-burger-menu';
 import { clone, find, propEq, prop, not, isNil } from 'ramda';
 
 const connect = require('react-redux').connect;
-import './projectsMenu.css';
+import './menu.css';
 
-class ProjectsMenu extends React.Component {
+class MainMenu extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -21,7 +22,7 @@ class ProjectsMenu extends React.Component {
     onMenuItemClicked(event) {
         event.preventDefault();
         const selectedProjectId = event.target.getAttribute('project-id');
-        const project = find(propEq('id', parseInt(selectedProjectId)), this.props.projects);
+        const project = find(propEq('id', parseInt(selectedProjectId)), this.props.menuItems);
         if (not(isNil(project))) {
             this.props.dispatch(selectProject(project));
             this.setState({ menuOpen: false });
@@ -40,14 +41,25 @@ class ProjectsMenu extends React.Component {
                     onStateChange={this.handleStateChange}
                     pageWrapId={"outer-container"} outerContainerId={"outer-container"}>
                     {
-                        (this.props.projects || []).map((project, projectIndex) =>
+                        (this.props.menuItems || []).map((project, projectIndex) =>
                             <ul key={projectIndex} project-id={project.id}
                                 onClick={this.onMenuItemClicked} className="menu-item">
-                                <h2 project-id={project.id}>{project.name}</h2>
                                 {
-                                    (project.works || []).map((work, workIndex) => {
-                                        return <li key={`${projectIndex}${workIndex}`} project-id={project.id}>{work.name}</li>;
-                                    })
+                                    project.isNavLink ?
+                                      <h2>
+                                        <Link to={project.link}>
+                                            {project.name}
+                                        </Link>
+                                      </h2>
+                                    :
+                                        <div>
+                                            <h2 project-id={project.id}>{project.name}</h2>
+                                            {
+                                                (project.works || []).map((work, workIndex) => {
+                                                    return <li key={`${projectIndex}${workIndex}`} project-id={project.id}>{work.name}</li>;
+                                                })
+                                            }
+                                        </div>
                                 }
                             </ul>)
                     }
@@ -56,10 +68,15 @@ class ProjectsMenu extends React.Component {
         );
     }
 }
+function mapStateToProps(state, ownProps) {
+    return {
+        menuItems: state.menu.items
+    };
+}
 
-ProjectsMenu.propTypes = {
+MainMenu.propTypes = {
     dispatch: PropTypes.func,
-    projects: PropTypes.array
+    menuItems: PropTypes.array
 };
 
-export default connect()(ProjectsMenu);
+export default connect(mapStateToProps)(MainMenu);

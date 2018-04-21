@@ -5,7 +5,7 @@ import { getTranslate } from 'react-localize-redux';
 import { not, isNil, isEmpty, clone } from 'ramda';
 
 import ProjectDetails from './details/ProjectDetails';
-import ProjectsMenu from './menu/ProjectsMenu';
+import MainMenu from '../common/mainMenu/MainMenu';
 import Gallery from 'react-grid-gallery';
 
 const connect = require('react-redux').connect;
@@ -28,7 +28,7 @@ class Projects extends React.Component {
     render() {
         return (
             <div>
-                <ProjectsMenu projects={this.props.menuItems} />
+                <MainMenu />
                 <div id="outer-container">
                     {
                         isNil(this.props.selectedProject.name) ?
@@ -57,7 +57,6 @@ class Projects extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        menuItems: state.menu.items,
         selectedProject: state.projects.selectedProject || {},
         projectsCollection: state.projects.projectsCollection || [],
         translate: getTranslate(state.localeReducer),
@@ -67,7 +66,6 @@ function mapStateToProps(state, ownProps) {
 Projects.propTypes = {
     'dispatch': PropTypes.func,
     'projectsCollection': PropTypes.array,
-    'menuItems': PropTypes.array,
     'selectedProject': PropTypes.object,
     'translate': PropTypes.func,
     'selectedProject.name': PropTypes.string

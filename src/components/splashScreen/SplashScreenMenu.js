@@ -8,7 +8,7 @@ const menuStyle = {
 };
 
 
-const NavigationMenu = ({translate}) => {
+const HomeMenu = ({translate}) => {
     return (
         <div style={menuStyle} >
             <IndexLink to="projects">
@@ -26,7 +26,7 @@ const NavigationMenu = ({translate}) => {
     );
 };
 
-NavigationMenu.propTypes = {
+HomeMenu.propTypes = {
     translate: PropTypes.func
 };
-export default localize(NavigationMenu, 'localeReducer');
+export default localize(HomeMenu, 'localeReducer');

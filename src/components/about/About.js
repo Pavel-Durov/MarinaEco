@@ -1,14 +1,20 @@
 import React from 'react';
 import MainMenu from '../common/mainMenu/MainMenu';
 
-class ContactMe extends React.Component {
+import './about.css';
+
+class About extends React.Component {
 
     render() {
         return (
             <div>
                 <MainMenu />
                 <div id="outer-container">
-                    <h1>Contact Me</h1>
+                    <h1>About</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -21,4 +27,4 @@ class ContactMe extends React.Component {
     }
 }
 
-export default ContactMe;
+export default About;
