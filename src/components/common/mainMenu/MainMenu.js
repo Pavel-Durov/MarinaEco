@@ -22,7 +22,7 @@ class MainMenu extends React.Component {
     onMenuItemClicked(event) {
         event.preventDefault();
         const selectedProjectId = event.target.getAttribute('project-id');
-        const project = find(propEq('id', parseInt(selectedProjectId)), this.props.projects);
+        const project = find(propEq('id', parseInt(selectedProjectId)), this.props.menuItems);
         if (not(isNil(project))) {
             this.props.dispatch(selectProject(project));
             this.setState({ menuOpen: false });
@@ -41,7 +41,7 @@ class MainMenu extends React.Component {
                     onStateChange={this.handleStateChange}
                     pageWrapId={"outer-container"} outerContainerId={"outer-container"}>
                     {
-                        (this.props.projects || []).map((project, projectIndex) =>
+                        (this.props.menuItems || []).map((project, projectIndex) =>
                             <ul key={projectIndex} project-id={project.id}
                                 onClick={this.onMenuItemClicked} className="menu-item">
                                 {
@@ -68,10 +68,15 @@ class MainMenu extends React.Component {
         );
     }
 }
+function mapStateToProps(state, ownProps) {
+    return {
+        menuItems: state.menu.items
+    };
+}
 
 MainMenu.propTypes = {
     dispatch: PropTypes.func,
-    projects: PropTypes.array
+    menuItems: PropTypes.array
 };
 
-export default connect()(MainMenu);
+export default connect(mapStateToProps)(MainMenu);

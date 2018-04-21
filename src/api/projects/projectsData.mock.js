@@ -5,6 +5,7 @@ export default {
         thumbnailWidth: 40,
         thumbnailHeight: 40,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu malesuada nulla. Vestibulum nec volutpat magna. Mauris et scelerisque enim, eu ultricies elit. Mauris porttitor quam sed nibh sollicitudin, nec aliquet urna facilisis. Maecenas commodo imperdiet dapibus. Ut urna nisi, fermentum vitae nunc sit amet, ornare lacinia eros. Quisque a augue justo. Donec vitae ligula a metus placerat malesuada. Nullam volutpat, velit sed cursus scelerisque, libero felis blandit quam, sit amet aliquam nulla leo eget tellus. Vivamus auctor aliquam augue, at tristique ipsum faucibus quis. Suspendisse et sapien metus. Nunc massa ante, tempus lacinia viverra id, laoreet eget velit.',
+        name: 'Project No. 1',
         works: [{
             src: "assets/img/projects/proj_0/work_0.jpeg",
             thumbnail: "assets/img/projects/proj_0/work_0.jpeg",
