@@ -53,14 +53,8 @@ class Projects extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-<<<<<<< Updated upstream
-        menuItems: state.menu.items,
         selectedProject: state.projects.selectedProject,
         projectsCollection: state.projects.projectsCollection,
-=======
-        selectedProject: state.projects.selectedProject || {},
-        projectsCollection: state.projects.projectsCollection || [],
->>>>>>> Stashed changes
         translate: getTranslate(state.localeReducer),
     };
 }
