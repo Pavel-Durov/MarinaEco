@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationMenu from '../common/NavigationMenu';
+import SplashScreenMenu from './SplashScreenMenu';
 
 import { Link } from 'react-router';
 
@@ -27,7 +27,7 @@ class SplashScreen extends React.Component {
         return (
             <div style={mainDivStyle}>
                 <div style={menu}>
-                    <NavigationMenu />
+                    <SplashScreenMenu />
                 </div>
             </div>
         );
