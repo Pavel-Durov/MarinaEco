@@ -4,7 +4,7 @@ const DEFAULT_STATE = {
     items: undefined
 };
 
-const globalNavMenuItems = [
+export const globalNavMenuItems = [
     {
         name: 'Home',
         isNavLink: true,
@@ -31,8 +31,8 @@ export default function menuReducer(state = DEFAULT_STATE, action) {
     let nextState = state;
     switch (action.type) {
         case PROJECTS_LOADED_SUCCESS:
-            nextState = Object.assign({}, globalNavMenuItems, {
-                items: [...globalNavMenuItems, ...action.payload],
+            nextState = Object.assign({}, state, {
+                items: [...globalNavMenuItems, ...action.payload || []]
             });
             break;
     }
