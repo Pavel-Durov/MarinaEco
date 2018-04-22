@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { selectProject } from '../../actions/ProjectActions';
 import { getTranslate } from 'react-localize-redux';
 import { not, isNil, isEmpty, clone, find, propEq } from 'ramda';
-import * as R from 'ramda';
 
 import ProjectDetails from './details/ProjectDetails';
 import MainMenu from '../common/mainMenu/MainMenu';
@@ -18,6 +17,18 @@ class Projects extends React.Component {
         super(props, context);
         this.selectedProject = {};
         this.onProjectSelected = this.onProjectSelected.bind(this);
+
+        this.setSelectedProject(this.props);
+    }
+
+    setSelectedProject(props) {
+        const id = parseInt(props.location.query.id);
+        const project = find(propEq('id', id), this.props.projectsCollection);
+        this.selectedProject = project || {};
+    }
+
+    componentWillUpdate(props) {
+        this.setSelectedProject(props);
     }
 
     componentWillUnmount() {
@@ -29,16 +40,10 @@ class Projects extends React.Component {
         this.props.dispatch(selectProject(project));
     }
 
-    componentWillUpdate(props) {
-        const id = parseInt(props.location.query.id);
-        const project = R.find(R.propEq('id', id), this.props.projectsCollection);
-        this.selectedProject = project || {};
-    }
-
     render() {
         return (
             <div>
-                <MainMenu/>
+                <MainMenu />
                 <div id="outer-container">
                     {
                         isNil(this.selectedProject.name) ?
