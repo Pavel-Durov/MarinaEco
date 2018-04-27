@@ -1,3 +1,12 @@
 #outer-container{
     height: 100%;
 }
+
+body {
+    display: block;
+    margin: 0px !important;
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+}

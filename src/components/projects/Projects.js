@@ -21,18 +21,18 @@ class Projects extends React.Component {
         this.setSelectedProject(this.props);
     }
 
-    setSelectedProject(props) {
-        const id = parseInt(props.location.query.id);
-        const project = find(propEq('id', id), this.props.projectsCollection);
-        this.selectedProject = project || {};
-    }
-
     componentWillUpdate(props) {
         this.setSelectedProject(props);
     }
 
     componentWillUnmount() {
         this.props.dispatch(selectProject(undefined));
+    }
+
+    setSelectedProject(props) {
+        const id = parseInt(props.location.query.id);
+        const project = find(propEq('id', id), this.props.projectsCollection);
+        this.selectedProject = project || {};
     }
 
     onProjectSelected(index) {
